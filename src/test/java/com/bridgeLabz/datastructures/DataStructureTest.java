@@ -23,7 +23,7 @@ public class DataStructureTest {
 		assertTrue(result);
 
 	}
-	
+
 	@Test
 	public void given3NumbersWhenAddedToALinkedListShouldPassLinkedListTest() {
 		MyNode myFirstNode = new MyNode<Integer>(56);
@@ -33,9 +33,38 @@ public class DataStructureTest {
 		myLinkedList.add(myFirstNode);
 		myLinkedList.add(mySecondNode);
 		myLinkedList.add(myThirdNode);
-		
-		boolean result = myLinkedList.head.equals(myThirdNode) && myLinkedList.head.getNext().equals(mySecondNode) && myLinkedList.tail.equals(myFirstNode);
-		assertTrue(result);
 
+		boolean result = myLinkedList.head.equals(myThirdNode) && myLinkedList.head.getNext().equals(mySecondNode)
+				&& myLinkedList.tail.equals(myFirstNode);
+		assertTrue(result);
 	}
+	
+	@Test
+	public void given3NumbersWhenAppendedToALinkedListShouldPassLinkedListTest() {
+		MyNode myFirstNode = new MyNode<Integer>(56);
+		MyNode mySecondNode = new MyNode<Integer>(30);
+		MyNode myThirdNode = new MyNode<Integer>(70);
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
+		myLinkedList.append(myFirstNode);
+		myLinkedList.append(mySecondNode);
+		myLinkedList.append(myThirdNode);
+		boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.head.getNext().equals(mySecondNode)
+				&& myLinkedList.tail.equals(myThirdNode);
+		assertTrue(result);
+	}
+	
+	@Test
+	public void givenANumbersWhenInsertedBetweenTwoNumbersinLinkedListShouldPassLinkedListTest() {
+		MyNode myFirstNode = new MyNode<Integer>(56);
+		MyNode mySecondNode = new MyNode<Integer>(30);
+		MyNode myThirdNode = new MyNode<Integer>(70);
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
+		myLinkedList.append(myFirstNode);
+		myLinkedList.append(myThirdNode);
+		myLinkedList.addBetween(myFirstNode, mySecondNode);
+		boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.head.getNext().equals(mySecondNode)
+				&& myLinkedList.tail.equals(myThirdNode);
+		assertTrue(result);
+	}
+	
 }

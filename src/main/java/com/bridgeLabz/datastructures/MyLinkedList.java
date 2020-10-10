@@ -23,4 +23,32 @@ public class MyLinkedList<T> {
 		}
 		
 	}
+	
+	public void append(INode<T> newNode) {
+		
+		if(this.head==null) {
+			this.head = newNode;
+			}
+		if(this.tail == null) {
+			this.tail =newNode;
+		}
+		else {
+			INode<T> tempNode = null;
+			tempNode = this.tail;
+			this.tail = newNode;
+			this.head.setNext(tempNode);
+		}
+		
+	}
+	
+	public void addBetween(INode<T> firstNode,INode<T> newNode) {
+		INode<T> tempNode = null;
+		INode<T> reqdNode = this.head;
+		while(reqdNode != firstNode) {
+			reqdNode = reqdNode.getNext();
+		}
+		tempNode = reqdNode.getNext();
+		reqdNode.setNext(newNode);
+		reqdNode.getNext().setNext(tempNode);
+	}
 }
