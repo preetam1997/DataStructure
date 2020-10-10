@@ -67,4 +67,17 @@ public class DataStructureTest {
 		assertTrue(result);
 	}
 	
+	@Test
+	public void givenALinkedListDeletingItsFirstElementShouldPassLinkedListTest() {
+		MyNode myFirstNode = new MyNode<Integer>(56);
+		MyNode mySecondNode = new MyNode<Integer>(30);
+		MyNode myThirdNode = new MyNode<Integer>(70);
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
+		myLinkedList.append(myFirstNode);
+		myLinkedList.append(myThirdNode);
+		myLinkedList.addBetween(myFirstNode, mySecondNode);
+		boolean result = myLinkedList.pop() == 56;
+		assertTrue(result);
+	}
+	
 }

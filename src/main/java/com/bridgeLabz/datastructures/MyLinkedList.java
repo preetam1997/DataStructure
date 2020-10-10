@@ -51,4 +51,13 @@ public class MyLinkedList<T> {
 		reqdNode.setNext(newNode);
 		reqdNode.getNext().setNext(tempNode);
 	}
+	
+	public T pop() {
+		INode<T> tempNode = this.head;
+		head  = head.getNext();
+		tempNode.setNext(null);
+		
+		return tempNode.getKey();
+		
+	}
 }
