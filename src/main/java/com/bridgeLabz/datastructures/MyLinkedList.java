@@ -63,7 +63,6 @@ public class MyLinkedList<T> {
 		
 	}
 	public void popLast() {
-		INode<T> tempNode = null;
 		INode<T> newLastNode = this.head;
 		while(newLastNode.getNext()!=this.tail){
 			newLastNode = newLastNode.getNext();
@@ -77,5 +76,13 @@ public class MyLinkedList<T> {
 			reqdNode = reqdNode.getNext();
 		}
 		return reqdNode;
+	}
+	public void appendSpecific(T key, INode<T> newNode) {
+		INode<T> reqdNode=Search(key);
+		INode<T> tempNode = null;
+		tempNode = reqdNode.getNext();
+		reqdNode.setNext(newNode);
+		newNode.setNext(tempNode);
+		
 	}
 }
