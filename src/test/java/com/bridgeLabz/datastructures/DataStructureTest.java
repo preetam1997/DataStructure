@@ -95,7 +95,6 @@ public class DataStructureTest {
 
 	@Test
 	public void givenALinkedListWhenFoundTheRequiredKeyShouldPassLinkedListTest() {
-
 		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
 		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
 		MyNode<Integer> myThirdNode = new MyNode<Integer>(70);
@@ -110,7 +109,6 @@ public class DataStructureTest {
 
 	@Test
 	public void givenALinkedListAppendAtASpecifiedShouldPassLinkedListTest() {
-
 		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
 		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
 		MyNode<Integer> myThirdNode = new MyNode<Integer>(70);
@@ -122,6 +120,23 @@ public class DataStructureTest {
 		myLinkedList.appendSpecific(30, newNode);
 		boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.head.getNext().equals(mySecondNode)
 				&& myLinkedList.head.getNext().getNext().equals(newNode) && myLinkedList.tail.equals(myThirdNode);
+		assertTrue(result);
+	}
+	
+	@Test
+	public void givenALinkedListDeleteAtASpecifiedLocationShouldPassLinkedListTest() {
+		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
+		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
+		MyNode<Integer> myThirdNode = new MyNode<Integer>(40);
+		MyNode<Integer> myFourthNode = new MyNode<Integer>(70);
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
+		myLinkedList.append(myFirstNode);
+		myLinkedList.append(mySecondNode);
+		myLinkedList.append(myThirdNode);
+		myLinkedList.append(myFourthNode);
+		myLinkedList.deleteSpecific(40);
+		int size = myLinkedList.size();
+		boolean result = size == 3;
 		assertTrue(result);
 	}
 

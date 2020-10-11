@@ -85,4 +85,24 @@ public class MyLinkedList<T> {
 		newNode.setNext(tempNode);
 		
 	}
+	public void deleteSpecific(T key) {
+		INode<T> reqdNode = this.head;
+		INode<T> tempNode = null;
+		while(reqdNode.getNext().getKey()!=key) {
+			reqdNode = reqdNode.getNext();
+		}
+		tempNode = reqdNode.getNext().getNext();
+		reqdNode.getNext().setNext(null);
+		reqdNode.setNext(tempNode);
+	}
+	
+	public int size() {
+		int size = 0;
+		INode<T> tempNode = this.head;
+		while(tempNode!=null) {
+			tempNode=tempNode.getNext();
+			size++;
+		}
+		return size;
+	}
 }
