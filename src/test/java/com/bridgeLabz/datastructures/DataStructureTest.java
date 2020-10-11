@@ -91,7 +91,24 @@ public class DataStructureTest {
 		myLinkedList.append(mySecondNode);
 		myLinkedList.append(myThirdNode);
 		myLinkedList.popLast();
-		boolean result = myLinkedList.tail.equals(myThirdNode);
-		assertFalse(result);
+		boolean result = myLinkedList.tail.equals(mySecondNode);
+		assertTrue(result);
+	
 	}
+	@Test
+	public void givenALinkedListWhenFoundTheRequiredKeyShouldPassLinkedListTest() {
+
+		MyNode myFirstNode = new MyNode<Integer>(56);
+		MyNode mySecondNode = new MyNode<Integer>(30);
+		MyNode myThirdNode = new MyNode<Integer>(70);
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
+		myLinkedList.append(myFirstNode);
+		myLinkedList.append(mySecondNode);
+		myLinkedList.append(myThirdNode);
+		INode<Integer> node = myLinkedList.Search(30);
+		boolean result = node.getKey()==30;
+		assertTrue(result);
+	}
+	
+
 }

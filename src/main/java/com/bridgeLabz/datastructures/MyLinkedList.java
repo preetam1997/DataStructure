@@ -70,7 +70,7 @@ public class MyLinkedList<T> {
 		}
 		this.tail = newLastNode;
 	}
-	
+
 	public INode<T> Search(T key) {
 		INode<T> reqdNode = this.head;
 		while(reqdNode.getKey()!=key) {
