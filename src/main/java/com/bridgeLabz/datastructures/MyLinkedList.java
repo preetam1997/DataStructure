@@ -33,10 +33,12 @@ public class MyLinkedList<T> {
 			this.tail =newNode;
 		}
 		else {
-			INode<T> tempNode = null;
-			tempNode = this.tail;
+			INode<T> tempNode = this.head;
+			while(tempNode.getNext()!=null) {
+				tempNode=tempNode.getNext();
+			}
+			tempNode.setNext(newNode);
 			this.tail = newNode;
-			this.head.setNext(tempNode);
 		}
 		
 	}
@@ -60,4 +62,22 @@ public class MyLinkedList<T> {
 		return tempNode.getKey();
 		
 	}
+	public void popLast() {
+		INode<T> tempNode = null;
+		INode<T> newLastNode = this.head;
+		while(newLastNode.getNext()!=this.tail){
+			newLastNode = newLastNode.getNext();
+		}
+		this.tail = newLastNode;
+	}
+	public INode<T> Search(T key) {
+		INode<T> reqdNode = this.head;
+		while(reqdNode.getKey()!=key) {
+			reqdNode = reqdNode.getNext();
+		}
+		return reqdNode;
+	}
+
+	
+	
 }
