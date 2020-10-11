@@ -1,5 +1,6 @@
 package com.bridgeLabz.datastructures;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.LinkedList;
@@ -74,10 +75,23 @@ public class DataStructureTest {
 		MyNode myThirdNode = new MyNode<Integer>(70);
 		MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
 		myLinkedList.append(myFirstNode);
+		myLinkedList.append(mySecondNode);
 		myLinkedList.append(myThirdNode);
-		myLinkedList.addBetween(myFirstNode, mySecondNode);
 		boolean result = myLinkedList.pop() == 56;
 		assertTrue(result);
 	}
 	
+	@Test
+	public void givenALinkedListDeletingItslastElementShouldPassLinkedListTest() {
+		MyNode myFirstNode = new MyNode<Integer>(56);
+		MyNode mySecondNode = new MyNode<Integer>(30);
+		MyNode myThirdNode = new MyNode<Integer>(70);
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
+		myLinkedList.append(myFirstNode);
+		myLinkedList.append(mySecondNode);
+		myLinkedList.append(myThirdNode);
+		myLinkedList.popLast();
+		boolean result = myLinkedList.tail.equals(myThirdNode);
+		assertFalse(result);
+	}
 }
