@@ -139,16 +139,24 @@ public class MyLinkedList<T extends Comparable<T>> {
 	public void pop() {
 		this.head = this.head.getNext();
 	}
-	
+
 	public void enqueue(INode<T> newNode) {
 		if (this.tail == null) {
 			this.head = this.tail = newNode;
 			return;
 		}
-
-		// Add the new node at the end of queue and change rear
 		this.tail.setNext(newNode);
 		this.tail = newNode;
+	}
+	
+	public INode<T> dequeue() {
+		if (this.head == null) 
+            return null; 
+		INode<T> dequeuedNode = this.head; 
+        this.head = this.head.getNext();  
+        if (this.head == null) 
+            this.tail = null; 
+		return dequeuedNode;
 	}
 
 }

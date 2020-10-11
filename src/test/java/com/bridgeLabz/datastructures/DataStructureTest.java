@@ -186,6 +186,34 @@ public class DataStructureTest {
 		boolean result2 = stack.peek() == 30;
 		assertTrue(result1 && result2);
 	}
+	
+	@Test
+	public void givenA3NumbersWhenEnqueuedShouldPassQueueTest() {
+		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
+		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
+		MyNode<Integer> myThirdNode = new MyNode<Integer>(70);
+		MyLinkedList<Integer> queue = new MyLinkedList<Integer>();
+		queue.enqueue(myFirstNode);
+		queue.enqueue(mySecondNode);
+		queue.enqueue(myThirdNode);
+		boolean result = queue.head.equals(myFirstNode) && queue.head.getNext().equals(mySecondNode)
+				&& queue.tail.equals(myThirdNode);
+		assertTrue(result);
+	}
+
+	@Test
+	public void givenA3NumbersWhenDequeuedShouldPassQueueTest() {
+		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
+		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
+		MyNode<Integer> myThirdNode = new MyNode<Integer>(70);
+		MyLinkedList<Integer> queue = new MyLinkedList<Integer>();
+		queue.enqueue(myFirstNode);
+		queue.enqueue(mySecondNode);
+		queue.enqueue(myThirdNode);
+		boolean result = queue.dequeue().getKey() == 56 && queue.dequeue().getKey() == 30
+				&& queue.dequeue().getKey() == 70 ;
+		assertTrue(result);
+	}
 
 
 }
