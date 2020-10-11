@@ -5,7 +5,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class DataStructureTest {
-
+	
+	@Test
 	public void welcomeMessage() {
 		System.out.println("Welcome To Data Structure");
 	}
@@ -137,6 +138,24 @@ public class DataStructureTest {
 		myLinkedList.deleteSpecific(40);
 		int size = myLinkedList.size();
 		boolean result = size == 3;
+		assertTrue(result);
+	}
+	
+	@Test
+	public void givenALinkedListIfAddedSortedMannerShouldPassLinkedListTest() {
+		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
+		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
+		MyNode<Integer> myThirdNode = new MyNode<Integer>(40);
+		MyNode<Integer> myFourthNode = new MyNode<Integer>(70);
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
+		myLinkedList.orderedAdd(myFirstNode);
+		myLinkedList.orderedAdd(mySecondNode);
+		myLinkedList.orderedAdd(myThirdNode);
+		myLinkedList.orderedAdd(myFourthNode);
+		
+		boolean result  = myLinkedList.head.equals(mySecondNode) && myLinkedList.head.getNext().equals(myThirdNode)
+				&& myLinkedList.head.getNext().getNext().equals(myFirstNode) && myLinkedList.tail.equals(myFourthNode);
+		
 		assertTrue(result);
 	}
 
