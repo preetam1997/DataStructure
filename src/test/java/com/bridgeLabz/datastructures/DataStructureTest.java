@@ -172,6 +172,20 @@ public class DataStructureTest {
 		assertTrue(result);
 	}
 
+	@Test
+	public void givenA3NumbersWhenPoppedandPeekedFromStackShouldPassStackTest() {
+		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
+		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
+		MyNode<Integer> myThirdNode = new MyNode<Integer>(70);
+		MyLinkedList<Integer> stack = new MyLinkedList<Integer>();
+		stack.push(myFirstNode);
+		stack.push(mySecondNode);
+		stack.push(myThirdNode);
+		boolean result1 = stack.peek() == 70;
+		stack.pop();
+		boolean result2 = stack.peek() == 30;
+		assertTrue(result1 && result2);
+	}
 
 
 }

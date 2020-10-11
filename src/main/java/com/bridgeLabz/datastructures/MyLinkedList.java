@@ -127,10 +127,17 @@ public class MyLinkedList<T extends Comparable<T>> {
 		this.tail = tempNode;
 	}
 
-	public void push(INode<T> newNode)
-	{
+	public void push(INode<T> newNode) {
 		newNode.setNext(this.head);
 		this.head = newNode;
+	}
+
+	public T peek() {
+		return this.head.getKey();
+	}
+
+	public void pop() {
+		this.head = this.head.getNext();
 	}
 
 }
