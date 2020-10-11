@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class DataStructureTest {
-	
+
 	@Test
 	public void welcomeMessage() {
 		System.out.println("Welcome To Data Structure");
@@ -75,7 +75,7 @@ public class DataStructureTest {
 		myLinkedList.append(myFirstNode);
 		myLinkedList.append(mySecondNode);
 		myLinkedList.append(myThirdNode);
-		boolean result = myLinkedList.pop() == 56;
+		boolean result = myLinkedList.popFirst() == 56;
 		assertTrue(result);
 	}
 
@@ -91,7 +91,6 @@ public class DataStructureTest {
 		myLinkedList.popLast();
 		boolean result = myLinkedList.tail.equals(mySecondNode);
 		assertTrue(result);
-
 	}
 
 	@Test
@@ -123,7 +122,7 @@ public class DataStructureTest {
 				&& myLinkedList.head.getNext().getNext().equals(newNode) && myLinkedList.tail.equals(myThirdNode);
 		assertTrue(result);
 	}
-	
+
 	@Test
 	public void givenALinkedListDeleteAtASpecifiedLocationShouldPassLinkedListTest() {
 		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
@@ -140,7 +139,7 @@ public class DataStructureTest {
 		boolean result = size == 3;
 		assertTrue(result);
 	}
-	
+
 	@Test
 	public void givenALinkedListIfAddedSortedMannerShouldPassLinkedListTest() {
 		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
@@ -152,11 +151,27 @@ public class DataStructureTest {
 		myLinkedList.orderedAdd(mySecondNode);
 		myLinkedList.orderedAdd(myThirdNode);
 		myLinkedList.orderedAdd(myFourthNode);
-		
-		boolean result  = myLinkedList.head.equals(mySecondNode) && myLinkedList.head.getNext().equals(myThirdNode)
+
+		boolean result = myLinkedList.head.equals(mySecondNode) && myLinkedList.head.getNext().equals(myThirdNode)
 				&& myLinkedList.head.getNext().getNext().equals(myFirstNode) && myLinkedList.tail.equals(myFourthNode);
-		
+
 		assertTrue(result);
 	}
+
+	@Test
+	public void givenA3NumbersWhenPushedToStackShouldPassStackTest() {
+		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
+		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
+		MyNode<Integer> myThirdNode = new MyNode<Integer>(70);
+		MyLinkedList<Integer> stack = new MyLinkedList<Integer>();
+		stack.push(myFirstNode);
+		stack.push(mySecondNode);
+		stack.push(myThirdNode);
+		boolean result = stack.head.equals(myThirdNode) && stack.head.getNext().equals(mySecondNode)
+				&& stack.head.getNext().getNext().equals(myFirstNode);
+		assertTrue(result);
+	}
+
+
 
 }

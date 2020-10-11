@@ -53,7 +53,7 @@ public class MyLinkedList<T extends Comparable<T>> {
 		reqdNode.getNext().setNext(tempNode);
 	}
 
-	public T pop() {
+	public T popFirst() {
 		INode<T> tempNode = this.head;
 		head = head.getNext();
 		tempNode.setNext(null);
@@ -125,6 +125,12 @@ public class MyLinkedList<T extends Comparable<T>> {
 			tempNode = tempNode.getNext();
 		}
 		this.tail = tempNode;
+	}
+
+	public void push(INode<T> newNode)
+	{
+		newNode.setNext(this.head);
+		this.head = newNode;
 	}
 
 }
