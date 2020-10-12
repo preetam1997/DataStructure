@@ -28,9 +28,6 @@ public class MyLinkedList<T extends Comparable<T>> {
 
 		if (this.head == null) {
 			this.head = newNode;
-		}
-		if (this.tail == null) {
-			this.tail = newNode;
 		} else {
 			INode<T> tempNode = this.head;
 			while (tempNode.getNext() != null) {
@@ -38,6 +35,7 @@ public class MyLinkedList<T extends Comparable<T>> {
 			}
 			tempNode.setNext(newNode);
 			this.tail = newNode;
+			
 		}
 
 	}
@@ -71,11 +69,14 @@ public class MyLinkedList<T extends Comparable<T>> {
 	}
 
 	public INode<T> Search(T key) {
-		INode<T> reqdNode = this.head;
-		while (reqdNode.getKey() != key) {
-			reqdNode = reqdNode.getNext();
+		INode<T> current = this.head; // Initialize current
+		while (current != null) {
+			if (current.getKey().equals(key) )
+				return current; // data found
+			current = current.getNext();
 		}
-		return reqdNode;
+		return null;
+
 	}
 
 	public void appendSpecific(T key, INode<T> newNode) {
@@ -88,14 +89,31 @@ public class MyLinkedList<T extends Comparable<T>> {
 	}
 
 	public void deleteSpecific(T key) {
-		INode<T> reqdNode = this.head;
-		INode<T> tempNode = null;
-		while (reqdNode.getNext().getKey() != key) {
-			reqdNode = reqdNode.getNext();
-		}
-		tempNode = reqdNode.getNext().getNext();
-		reqdNode.getNext().setNext(null);
-		reqdNode.setNext(tempNode);
+		  // Store head node
+        INode<T> temp = this.head, prev = null;
+ 
+        // If head node itself holds the key to be deleted
+        if (temp != null && temp.getKey() == key)
+        {
+        	
+            head = temp.getNext(); // Changed head
+            return;
+        }
+ 
+        // Search for the key to be deleted, keep track of the
+        // previous node as we need to change temp.next
+        while (temp != null && temp.getKey() != key)
+        {
+          
+        	prev = temp;
+            temp = temp.getNext();
+        }    
+ 
+        // If key was not present in linked list
+        if (temp == null) return;
+ 
+        // Unlink the node from linked list
+        prev.setNext(temp.getNext());
 	}
 
 	public int size() {
@@ -148,14 +166,14 @@ public class MyLinkedList<T extends Comparable<T>> {
 		this.tail.setNext(newNode);
 		this.tail = newNode;
 	}
-	
+
 	public INode<T> dequeue() {
-		if (this.head == null) 
-            return null; 
-		INode<T> dequeuedNode = this.head; 
-        this.head = this.head.getNext();  
-        if (this.head == null) 
-            this.tail = null; 
+		if (this.head == null)
+			return null;
+		INode<T> dequeuedNode = this.head;
+		this.head = this.head.getNext();
+		if (this.head == null)
+			this.tail = null;
 		return dequeuedNode;
 	}
 

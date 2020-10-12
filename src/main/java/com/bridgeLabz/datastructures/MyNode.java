@@ -10,7 +10,6 @@ public class MyNode<T> implements INode<T>{
 
 	@Override
 	public T getKey() {
-		
 		return key;
 	}
 
@@ -22,7 +21,6 @@ public class MyNode<T> implements INode<T>{
 
 	@Override
 	public INode<T> getNext() {
-		// TODO Auto-generated method stub
 		return next;
 	}
 
