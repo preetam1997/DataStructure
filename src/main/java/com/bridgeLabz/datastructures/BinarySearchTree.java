@@ -32,4 +32,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
 				return (rDepth + 1);
 		}
 	}
+
+	public MyBstNode<T> search(T key, MyBstNode<T> root) {
+
+		if (root == null || root.getKey().compareTo(key) == 0)
+			return root;
+
+		if (root.getKey().compareTo(key) > 0)
+			return search(key, root.getLeftChild());
+
+		return search(key, root.getRightChild());
+	}
 }
