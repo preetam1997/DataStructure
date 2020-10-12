@@ -20,13 +20,16 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		return root;
 	}
 
-	
-	public static void main(String[] args) {
-		BinarySearchTree<Integer> bst = new BinarySearchTree<>();
-		bst.head = bst.insert(56, bst.head);
-		bst.head = bst.insert(30, bst.head);
-		bst.head = bst.insert(70, bst.head);
-
-		
+	public Integer depth(MyBstNode<T> root) {
+		if (root == null)
+			return 0;
+		else {
+			int lDepth = depth(root.getLeftChild());
+			int rDepth = depth(root.getRightChild());
+			if (lDepth > rDepth)
+				return (lDepth + 1);
+			else
+				return (rDepth + 1);
+		}
 	}
 }

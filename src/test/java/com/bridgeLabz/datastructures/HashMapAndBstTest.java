@@ -70,4 +70,14 @@ public class HashMapAndBstTest {
 				&& bst.head.getRightChild().getKey() == 70;
 		assertTrue(result);
 	}
+
+	@Test
+	public void givenFewNumbersCreatingABinarySearchTreeShouldPassBSTTest() {
+		BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+		int[] keys = { 56, 30, 70, 22, 40, 60, 95, 11, 65, 3, 16, 63, 67 };
+		for (int key : keys) {
+			bst.head = bst.insert(key, bst.head);
+		}
+		assertEquals(5, (int) bst.depth(bst.head));
+	}
 }
