@@ -1,6 +1,7 @@
 package com.bridgeLabz.datastructures;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -38,6 +39,25 @@ public class HashMapAndBstTest {
 			myLinkedHashMap.add(words, value);
 		}
 		assertEquals(3, (int) myLinkedHashMap.get("paranoid"));
+	}
+	
+	@Test
+	public void givenALinkedHashMapWhenReturnsNullForRemovedKeyShouldPassHashMapTest() {
+		String sentance = "Paranoids are not paranoid because they're paranoid but because they keep putting themselves deliberately into paranoid situations";
+		MyLinkedHashMap<String, Integer> myLinkedHashMap = new MyLinkedHashMap<>();
+		String[] k = sentance.toLowerCase().split(" ");
+		for (String words : k) {
+			Integer value = myLinkedHashMap.get(words);
+			if (value == null) {
+				value = 1;
+			} else {
+				value = value + 1;
+			}
+			myLinkedHashMap.add(words, value);
+		}
+		myLinkedHashMap.remove("paranoid");
+		boolean result = myLinkedHashMap.get("paranoid") == null;
+		assertTrue(result);
 	}
 }
 
