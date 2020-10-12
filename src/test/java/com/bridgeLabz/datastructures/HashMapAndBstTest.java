@@ -22,6 +22,23 @@ public class HashMapAndBstTest {
 		}
 		assertEquals(2, (int) myHashMap.get("to"));
 	}
+	
+	@Test
+	public void givenALinkedHashMapGivesCorrectFrequencyShouldPassHashMapTest() {
+		String sentance = "Paranoids are not paranoid because they're paranoid but because they keep putting themselves deliberately into paranoid situations";
+		MyLinkedHashMap<String, Integer> myLinkedHashMap = new MyLinkedHashMap<>();
+		String[] k = sentance.toLowerCase().split(" ");
+		for (String words : k) {
+			Integer value = myLinkedHashMap.get(words);
+			if (value == null) {
+				value = 1;
+			} else {
+				value = value + 1;
+			}
+			myLinkedHashMap.add(words, value);
+		}
+		assertEquals(3, (int) myLinkedHashMap.get("paranoid"));
+	}
 }
 
 	
