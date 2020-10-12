@@ -11,7 +11,7 @@ public class MyHashMap<T extends Comparable<T>, V extends Comparable<V>> {
 		MyMapNode<T, V> myMapNode = (MyMapNode<T, V>) this.myLinkedList.Search(key);
 		return (myMapNode == null) ? null : myMapNode.getValue();
 	}
-	
+
 	public void add(T key, V value) {
 		MyMapNode<T, V> myMapNode = (MyMapNode<T, V>) this.myLinkedList.Search(key);
 		if (myMapNode == null) {

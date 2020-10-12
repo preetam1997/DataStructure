@@ -23,7 +23,7 @@ public class HashMapAndBstTest {
 		}
 		assertEquals(2, (int) myHashMap.get("to"));
 	}
-	
+
 	@Test
 	public void givenALinkedHashMapGivesCorrectFrequencyShouldPassHashMapTest() {
 		String sentance = "Paranoids are not paranoid because they're paranoid but because they keep putting themselves deliberately into paranoid situations";
@@ -40,7 +40,7 @@ public class HashMapAndBstTest {
 		}
 		assertEquals(3, (int) myLinkedHashMap.get("paranoid"));
 	}
-	
+
 	@Test
 	public void givenALinkedHashMapWhenReturnsNullForRemovedKeyShouldPassHashMapTest() {
 		String sentance = "Paranoids are not paranoid because they're paranoid but because they keep putting themselves deliberately into paranoid situations";
@@ -59,7 +59,15 @@ public class HashMapAndBstTest {
 		boolean result = myLinkedHashMap.get("paranoid") == null;
 		assertTrue(result);
 	}
-}
 
-	
-	
+	@Test
+	public void given3NumbersWhenLinkedinBinarySearchTreeFashionShouldPassBSTTest() {
+		BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+		bst.head = bst.insert(56, bst.head);
+		bst.head = bst.insert(30, bst.head);
+		bst.head = bst.insert(70, bst.head);
+		boolean result = bst.head.getKey() == 56 && bst.head.getLeftChild().getKey() == 30
+				&& bst.head.getRightChild().getKey() == 70;
+		assertTrue(result);
+	}
+}
